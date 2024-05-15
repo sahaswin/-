@@ -34,17 +34,16 @@ def plot_function(x_positive, y_positive, x_negative_shifted):
         height=300,  # Set plot height for mobile screens
         xaxis_title='x',
         yaxis_title='f(x)',
-        title='Graph of f(x)',
         plot_bgcolor='black'
     )
 
     return fig
 
 def main():
-    st.title('Function Visualization')
+    st.title('For you!')
 
     # Sidebar for parameter selection
-    a_value = st.slider('Select a value for "a"', min_value=-1.4, max_value=19.0, value=-0.30, step=0.1)
+    a_value = st.slider('Move the slider slowly', min_value=-1.4, max_value=19.0, value=-0.30, step=0.1)
 
     # Generate data based on the selected 'a' value
     x_positive, y_positive, x_negative_shifted = generate_data(a_value)
