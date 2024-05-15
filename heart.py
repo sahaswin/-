@@ -10,8 +10,8 @@ def f(x, a):
 
 def generate_data(a_value):
     # Generate x-values for positive and negative range
-    x_positive = np.linspace(0, 3, 1000)  # Positive range from 0 to 3
-    x_negative_shifted = np.linspace(0, -3, 1000)  # Negative range from 0 to -3 (shifted)
+    x_positive = np.linspace(0, 3, 500)  # Positive range from 0 to 3
+    x_negative_shifted = np.linspace(0, -3, 500)  # Negative range from 0 to -3 (shifted)
 
     # Calculate corresponding y-values for positive x-values
     y_positive = f(x_positive, a_value)
@@ -28,8 +28,10 @@ def plot_function(x_positive, y_positive, x_negative_shifted):
     # Plot the mirrored function for x < 0
     fig.add_trace(go.Scatter(x=x_negative_shifted, y=y_positive, mode='lines', name='f(x) for x < 0', line=dict(color='red')))
 
-    # Update layout
+    # Update layout for mobile optimization
     fig.update_layout(
+        width=400,  # Set plot width for mobile screens
+        height=300,  # Set plot height for mobile screens
         xaxis_title='x',
         yaxis_title='f(x)',
         title='Graph of f(x)',
@@ -39,7 +41,7 @@ def plot_function(x_positive, y_positive, x_negative_shifted):
     return fig
 
 def main():
-    st.title('For you!')
+    st.title('Function Visualization')
 
     # Sidebar for parameter selection
     a_value = st.slider('Select a value for "a"', min_value=-1.4, max_value=19.0, value=-0.30, step=0.1)
